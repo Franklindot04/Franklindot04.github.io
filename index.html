@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Franklin Ajero - DevOps, SRE and Platform Engineering portfolio." />
+  <meta name="author" content="Franklin Ajero" />
+  <title>Franklin Ajero | DevOps & SRE Engineer</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2e;
+      --card: #111f35;
+      --card-soft: #142640;
+      --text: #eaf2ff;
+      --muted: #9fb3c8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 34%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 17, 31, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111f;
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111f;
+      border-color: transparent;
+    }
+
+    .hero {
+      padding: 96px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.14rem;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .metric:last-child {
+      border-bottom: 0;
+    }
+
+    .metric strong {
+      color: var(--text);
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: rgba(17, 31, 53, 0.78);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.16rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      color: #c8efff;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .tag.green {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.18);
+      color: #c9f9d8;
+    }
+
+    .tag.gold {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.18);
+      color: #ffe7b0;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 100%;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .project-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      font-size: 1.3rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+      list-style: none;
+    }
+
+    .list li {
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+    }
+
+    .timeline-item strong {
+      color: var(--text);
+    }
+
+    .timeline-item span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 72px 28px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 42%),
+        rgba(17, 31, 53, 0.78);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .contact h2 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 26px;
+    }
+
+    footer {
+      padding: 34px 0 48px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 22px, 1120px);
+      }
+
+      .hero-actions,
+      .nav-links {
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-card,
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Franklin Ajero home">
+        <span class="brand-mark">FA</span>
+        <span>Franklin Ajero</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#focus">Focus</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#labs">Labs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">DevOps • SRE • Platform Engineering • Cloud Automation</div>
+          <h1>
+            Building reliable,
+            <span class="gradient-text">scalable systems</span>.
+          </h1>
+          <p>
+            I'm Franklin, a DevOps and Site Reliability Engineer focused on CI/CD automation,
+            Kubernetes platforms, observability, cloud infrastructure, and production-style
+            engineering systems that stay stable at scale.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn" href="https://github.com/Franklindot04" target="_blank" rel="noopener noreferrer">
+              GitHub Profile
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Profile highlights">
+          <h3>Engineering Snapshot</h3>
+          <div class="metric">
+            <span>Primary Focus</span>
+            <strong>DevOps / SRE</strong>
+          </div>
+          <div class="metric">
+            <span>Cloud</span>
+            <strong>AWS</strong>
+          </div>
+          <div class="metric">
+            <span>Platforms</span>
+            <strong>Kubernetes</strong>
+          </div>
+          <div class="metric">
+            <span>Delivery</span>
+            <strong>CI/CD + GitOps</strong>
+          </div>
+          <div class="metric">
+            <span>Observability</span>
+            <strong>Prometheus / Grafana</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Engineering Focus</h2>
+            <p>
+              I build systems around reliability, automation, deployment safety,
+              observability, and repeatable platform patterns.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Production-Style DevOps</h3>
+            <p>
+              CI/CD workflows with promotion, rollback, health checks, approvals,
+              version tracking, and operational automation.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>SRE & Observability</h3>
+            <p>
+              Metrics, dashboards, logs, alerts, runbooks, SLOs, error budgets,
+              and burn-rate based incident response.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Platform Engineering</h3>
+            <p>
+              Kubernetes-based platforms, GitOps workflows, service templates,
+              developer self-service, and delivery standards.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Core Strengths</h2>
+            <p>
+              The main engineering areas I focus on across my personal and portfolio projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>SRE, Reliability & Observability</h3>
+            <p>
+              Prometheus, Grafana, Alertmanager, Loki, metrics, dashboards, alerts,
+              incident workflows, runbooks, SLOs and operational readiness.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Platform Engineering</h3>
+            <p>
+              Kubernetes, GitOps, Helm, service templates, internal developer platforms,
+              platform governance, and self-service delivery workflows.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>DevOps Automation</h3>
+            <p>
+              GitHub Actions, Jenkins, Slack-driven workflows, Bash scripting,
+              Ansible automation, deployment orchestration, and rollback systems.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Cloud & Full-Stack Deployment</h3>
+            <p>
+              AWS EC2, Lambda, API Gateway, ECS Fargate, RDS, CloudWatch, Terraform,
+              Vercel, Railway, and Supabase.
+            </p>
+          </div>
+        </div>
+
+        <div class="tag-list" aria-label="Technology stack">
+          <span class="tag">AWS</span>
+          <span class="tag">EC2</span>
+          <span class="tag">Lambda</span>
+          <span class="tag">API Gateway</span>
+          <span class="tag">ECS Fargate</span>
+          <span class="tag">RDS</span>
+          <span class="tag">CloudWatch</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Alertmanager</span>
+          <span class="tag">Loki</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Redis</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">Railway</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Featured Projects</h2>
+            <p>
+              Selected DevOps, SRE, backend, automation, and platform engineering projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Travel SRE AI Agent Platform</h3>
+                <p>
+                  Kubernetes-native travel booking microservice platform with observability,
+                  SLOs, burn-rate alerts, Slack alerting, and controlled auto-remediation.
+                </p>
+              </div>
+              <div class="project-icon">🧠</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Prometheus</span>
+              <span class="tag">Grafana</span>
+              <span class="tag">Loki</span>
+              <span class="tag green">Auto-Remediation</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/travel-sre-ai-agent-platform" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Kubernetes Internal Developer Platform</h3>
+                <p>
+                  Kubernetes-based IDP with GitOps delivery, Helm standards,
+                  environment overlays, observability foundations, and a service template generator.
+                </p>
+              </div>
+              <div class="project-icon">☸️</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">GitOps</span>
+              <span class="tag">Helm</span>
+              <span class="tag">Service Templates</span>
+              <span class="tag green">Self-Service</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/k8s-internal-developer-platform" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>DevOps Deployment Automation</h3>
+                <p>
+                  Slack-controlled CI/CD pipeline using GitHub Actions, AWS Lambda,
+                  API Gateway, deployment scripts, version tracking, health checks, and rollback.
+                </p>
+              </div>
+              <div class="project-icon">🚀</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">AWS Lambda</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">Docker</span>
+              <span class="tag green">Rollback</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/devops-deployment-automation" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Prometheus + Grafana SRE Platform</h3>
+                <p>
+                  Full observability and alerting platform with FastAPI metrics,
+                  Prometheus scraping, Grafana dashboards, Blackbox Exporter, Alertmanager, and Slack alerts.
+                </p>
+              </div>
+              <div class="project-icon">📊</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Prometheus</span>
+              <span class="tag">Grafana</span>
+              <span class="tag">Alertmanager</span>
+              <span class="tag">Blackbox Exporter</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/prometheus-grafana-sre-project-Franklin" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Finance Tracker API</h3>
+                <p>
+                  Production-ready FastAPI backend deployed with Docker and Terraform to AWS ECS Fargate,
+                  using secure networking, RDS PostgreSQL, IAM, and CloudWatch logs.
+                </p>
+              </div>
+              <div class="project-icon">💰</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">ECS Fargate</span>
+              <span class="tag">RDS</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/finance-tracker-api" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Python Background Job Microservice</h3>
+                <p>
+                  FastAPI, Redis, and RQ microservice architecture for asynchronous job processing,
+                  status tracking, result retrieval, and Docker Compose orchestration.
+                </p>
+              </div>
+              <div class="project-icon">⚙️</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Redis</span>
+              <span class="tag">RQ</span>
+              <span class="tag">Docker Compose</span>
+              <span class="tag">Linux</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/python-background-job-microservice" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Ansible Automation Suite</h3>
+                <p>
+                  Collection of 15+ production-style Ansible playbooks for Linux server setup,
+                  application deployment, maintenance workflows, templating, handlers, and reusable automation.
+                </p>
+              </div>
+              <div class="project-icon">🛠️</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Ansible</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Playbooks</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/ansible-work-1" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Number Guess Game CI/CD Pipeline</h3>
+                <p>
+                  Java Servlet application with a full Jenkins pipeline, Maven build,
+                  SonarQube quality gates, Nexus artifact storage, Tomcat deployment, and AWS EC2 hosting.
+                </p>
+              </div>
+              <div class="project-icon">🎮</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">Jenkins</span>
+              <span class="tag">Maven</span>
+              <span class="tag">SonarQube</span>
+              <span class="tag">Nexus</span>
+              <span class="tag">Tomcat</span>
+              <span class="tag">EC2</span>
+            </div>
+            <a class="project-link" href="https://github.com/Franklindot04/number_guess_game/tree/master" target="_blank" rel="noopener noreferrer">
+              View Repository →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="labs">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Current Labs & Private Work</h2>
+            <p>
+              Selected private or in-progress work shown at a high level without exposing restricted repositories,
+              internal code, or sensitive implementation details.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Platform Engineering Maturity Lab</h3>
+                <p>
+                  Private reference project for building platform engineering practices in small,
+                  reviewable increments across governance, CI/CD, infrastructure, runtime,
+                  operations, security, policy, and release readiness.
+                </p>
+              </div>
+              <div class="project-icon">🏗️</div>
+            </div>
+            <ul class="list">
+              <li>Repository standards and engineering governance</li>
+              <li>CI/CD and release automation patterns</li>
+              <li>Infrastructure as Code and Kubernetes delivery</li>
+              <li>Observability, runbooks, incident response, and SLO review</li>
+              <li>Security guidance, policy-as-code, and controlled change management</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag gold">Private</span>
+              <span class="tag gold">In Progress</span>
+              <span class="tag">Platform Maturity</span>
+              <span class="tag">Governance</span>
+              <span class="tag">Runbooks</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <div>
+                <h3>Face Recognition Platform</h3>
+                <p>
+                  Private backend and model-service architecture using InsightFace, FastAPI,
+                  Docker, AWS, embedding generation, vector search, secure APIs, and user enrollment workflows.
+                </p>
+              </div>
+              <div class="project-icon">🧠</div>
+            </div>
+            <div class="tag-list">
+              <span class="tag gold">Private</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Vector Search</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="patterns">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Production Patterns I Build</h2>
+            <p>
+              Practical platform and reliability patterns demonstrated across my projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Deployment Safety</strong>
+              <span>Promotion workflows, Slack approvals, health checks, stateless rollback, and version tracking.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Observability & Incident Response</strong>
+              <span>Metrics, logs, dashboards, alerts, SLOs, burn rates, runbooks, and escalation workflows.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Developer Self-Service</strong>
+              <span>Service templates, environment overlays, Helm patterns, metadata enrichment, and platform standards.</span>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Cloud-Native Infrastructure</strong>
+              <span>AWS networking, IAM, ECS Fargate, RDS, CloudWatch, Docker, Terraform, and secure deployment layouts.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Microservice Operations</strong>
+              <span>API gateways, background workers, Redis queues, service health, structured logging, and runtime debugging.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>Platform Governance</strong>
+              <span>CODEOWNERS, issue templates, PR standards, Dependabot, branch protection, security guidance, and maturity tracking.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <h2>Let’s build reliable systems.</h2>
+          <p>
+            I’m focused on DevOps, SRE, cloud infrastructure, platform engineering,
+            CI/CD automation, Kubernetes delivery, observability, and production-ready backend systems.
+          </p>
+
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-primary" href="https://github.com/Franklindot04" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a class="btn" href="https://github.com/Franklindot04?tab=repositories" target="_blank" rel="noopener noreferrer">
+              Repositories
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Franklin Ajero. Built for GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
